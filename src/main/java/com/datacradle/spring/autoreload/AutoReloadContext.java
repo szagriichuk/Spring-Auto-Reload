@@ -11,7 +11,6 @@ public class AutoReloadContext {
     }
 
     public void printPropertiesToConsole() {
-//        autoreloadProperties = getBeanByNameForType("properties", AutoreloadProperties.class);
         System.out.println(autoreloadProperties.toString());
     }
 

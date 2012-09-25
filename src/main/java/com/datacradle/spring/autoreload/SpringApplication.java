@@ -48,6 +48,6 @@ public abstract class SpringApplication {
     }
 
     protected <T> T getBeanByNameForType(String name, Class<T> type) {
-        return (T) getApplicationContext().getBean(name);
+        return getApplicationContext().getBean(name, type);
     }
 }
