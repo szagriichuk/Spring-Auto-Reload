@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+    <context:annotation-config/>
+    <context:component-scan base-package="com.datacradle.spring.autoreload"/>
+    <context:property-placeholder location="file:///${external.properties.dir}/autoreload.properties"/>
+
+    <bean id="properties" class="com.datacradle.spring.autoreload.AutoreloadProperties">
+        <property name="test" value="${test.value}"/>
+    </bean>
+
+    <bean id="folderWatching" class="com.datacradle.spring.autoreload.FolderWatching">
+        <property name="pathToFolder" value="${external.properties.dir}"/>
+        <property name="watchFileName" value="autoreload.properties"/>
+    </bean>
+
+    <bean class="com.datacradle.spring.autoreload.AutoReloadContext" id="autoReloadContext">
+        <property name="properties" ref="properties"/>
+    </bean>
+
+</beans>

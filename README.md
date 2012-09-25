@@ -1,0 +1,1 @@
+to run -Dexternal.properties.dir={full path to external sources}
